@@ -70,16 +70,24 @@ public class FripperController : MonoBehaviour
         }
 
         // 両フリッパーを動かす
-        // 下矢印キーはバインド設定を満たさなくても操作可能
         // 押されている間はフリッパーが上がり続ける(フラグ判定は初回のみ)
-        if ((Input.GetKeyDown(KeyboardController.BOTHFLIP) || Input.GetKeyDown(KeyCode.DownArrow)) && 
-            ( this.gameObject.CompareTag(TagName.RightFripperTag) || this.gameObject.CompareTag(TagName.LeftFripperTag)))
+        if (Input.GetKeyDown(KeyboardController.BOTHFLIP) &&
+            (this.gameObject.CompareTag(TagName.RightFripperTag) || this.gameObject.CompareTag(TagName.LeftFripperTag)))
         {
             SetAngle(this.flickAngle);
-            //Debug.Log("Right Frip Up");
         }
-        //バインドキーまたは下矢印キーを離すと位置を戻す
-        if ((Input.GetKeyUp(KeyboardController.BOTHFLIP) || Input.GetKeyUp(KeyCode.DownArrow)) &&
+        if (Input.GetKeyUp(KeyboardController.BOTHFLIP) &&
+             (this.gameObject.CompareTag(TagName.RightFripperTag) || this.gameObject.CompareTag(TagName.LeftFripperTag)))
+        {
+            SetAngle(this.defaultAngle);
+        }
+
+        if (Input.GetKeyDown(KeyboardController.BOTHFLIP_SUB) &&
+            (this.gameObject.CompareTag(TagName.RightFripperTag) || this.gameObject.CompareTag(TagName.LeftFripperTag)))
+        {
+            SetAngle(this.flickAngle);
+        }
+        if (Input.GetKeyUp(KeyboardController.BOTHFLIP_SUB) &&
              (this.gameObject.CompareTag(TagName.RightFripperTag) || this.gameObject.CompareTag(TagName.LeftFripperTag)))
         {
             SetAngle(this.defaultAngle);

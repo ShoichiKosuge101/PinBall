@@ -22,7 +22,8 @@ public class BallController : MonoBehaviour
     // キーボード設定変更
     KeyCode _leftfrip = KeyCode.A;
     KeyCode _rightfrip = KeyCode.D;
-    KeyCode _bothfrip = KeyCode.S;
+    KeyCode _bothfrip = KeyCode.DownArrow;
+    KeyCode _bothfrip_sub = KeyCode.S;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class BallController : MonoBehaviour
         _scoreManager= _scoreTextObj.GetComponent<ScoreManager>();
 
         // キーボード設定変更
-        KeyboardController.BindForKeyboard(_leftfrip, _rightfrip,_bothfrip);
+        KeyboardController.BindForKeyboard(_leftfrip, _rightfrip, _bothfrip, _bothfrip_sub);
     }
 
     // Update is called once per frame
@@ -58,6 +59,8 @@ public class BallController : MonoBehaviour
         {
             TagName.SmallStarTag => 10,
             TagName.LargeStarTag => 20,
+            TagName.SmallCloudTag => 30,
+            TagName.LargeCloudTag => 40,
             _ => 0
         };
         _scoreManager.AddScore(score);

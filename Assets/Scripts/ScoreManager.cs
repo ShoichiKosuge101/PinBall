@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    private ScoreManager _scoreObject;
+    //private ScoreManager _scoreObject;
     private Text _scoreText;
     private int _score=0;
     private string _scoreFormat = "Score: ";
@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this._scoreObject = this.GetComponent<ScoreManager>();
+        //this._scoreObject = this.GetComponent<ScoreManager>();
         this._scoreText = this.GetComponent<Text>();
         this.ResetScore();
     }
